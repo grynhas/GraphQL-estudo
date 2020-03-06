@@ -5,7 +5,9 @@ const conexao = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'druida',
-  database: 'agenda-petshop'
+  database: 'agenda-petshop',
+  //multipleStatements que o sql faça duas chamadas na mesma linha.
+  multipleStatements: true
 })
 
 module.exports = conexao
