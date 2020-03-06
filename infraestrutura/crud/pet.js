@@ -13,12 +13,18 @@ class Pet {
     executaQuery(res, sql)
   }
 
-  adiciona(res, item) {
-    const { nome, dono, tipo, observacoes } = item
+  adiciona(item) {
+    const { nome, donoId, tipo, observacoes } = item
 
-    const sql = `INSERT INTO Pets(nome, donoId, tipo, observacoes) VALUES('${nome}', ${dono}, '${tipo}', '${observacoes}')`
+    const sql = `INSERT INTO Pets(nome, donoId, tipo, observacoes) VALUES('${nome}', ${donoId}, '${tipo}', '${observacoes}')`
 
-    executaQuery(res, sql)
+    return executaQuery(sql).then(resposta =>({
+      id: resposta.insertId,
+      nome,
+      donoId,
+      tipo,
+      observacoes
+    }))
   }
 
   atualiza(res, novoItem, id) {

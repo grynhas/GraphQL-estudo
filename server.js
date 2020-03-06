@@ -13,6 +13,7 @@ conexao.connect(erro => {
   Tabelas.init(conexao)
 })
 const Clientes = new Operacoes('cliente')
+const Pets = new Operacoes('pet')
 
 const resolvers = {
   Query: {
@@ -23,7 +24,8 @@ const resolvers = {
   Mutation: {
     adicionarCliente:(root, params) => Clientes.adiciona(params),
     atualizarCliente:(root, params) => Clientes.atualiza(params),
-    deletarCLiente:(root, {id}) => Clientes.deleta(id) 
+    deletarCLiente:(root, {id}) => Clientes.deleta(id),
+    adicionarPet:(root, params) => Pets.adiciona(params)
   }
 }
 
